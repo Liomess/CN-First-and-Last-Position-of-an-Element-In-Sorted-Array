@@ -1,0 +1,29 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def firstAndLastPosition(nums, n, target):
+    lb=n
+    l=0
+    h=n-1
+    while l<=h:
+        mid=l+(h-l)//2
+        if nums[mid]>=target:
+            lb=mid
+            h=mid-1
+        else:
+            l=mid+1
+    if lb==n or nums[lb]!=target:
+        return [-1,-1]
+    ub=n
+    l=0
+    h=n-1
+    while l<=h:
+        mid=l+(h-l)//2
+        if nums[mid]>target:
+            ub=mid
+            h=mid-1
+        else:
+            l=mid+1
+    return [lb,ub-1]
